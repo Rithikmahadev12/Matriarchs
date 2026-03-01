@@ -57,7 +57,7 @@ const fastify = Fastify({
 });
 fastify.addHook("onRequest", async (request, reply) => {
   if (gooners.includes(request.ip)) {
-    reply.code(200).send({ error: `You have been identified as a gooner. You IP, ${request.ip} has been traced and reported to the FBI.` });
+    reply.code(200).send({ error: `You have been identified as a gooner. Your IP, ${request.ip} has been traced and reported to the FBI.` });
   }
 });
 fastify.addHook("onRequest", async (request, reply) => {
