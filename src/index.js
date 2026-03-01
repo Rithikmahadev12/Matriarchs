@@ -24,7 +24,6 @@ const dscWebhook = process.env.webhookthing;
 const blockedIpsPath = path.join(__dirname, "..", "blocked.json");
 let blockedIps = [];
 let gooners = [
-  "173.63.95.100",
   "192.189.117.22",
   "206.162.39.143",
   "198.175.205.15",
