@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="/assets/styles/style.css" />
@@ -43,6 +43,12 @@
         <span class="galaxy h1eight WelcomeMsgversion">6</span>
       </h1>
       <a class="cta">Click to get started</a>
+      <br />
+      <br />
+      <a class="mini"
+        >hold&nbsp;&nbsp;&nbsp;<kbd><b>Alt</b></kbd
+        >&nbsp;&nbsp;to skip</a
+      >
     </div>
     <div class="onboarding">
       <div class="questionCard enterName stagger1" id="enterName">
@@ -106,6 +112,26 @@
       } else {
         location.href = "/";
       }
+    </script>
+    <script>
+      let altHoldTimer = null;
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Alt" && !altHoldTimer) {
+          altHoldTimer = setTimeout(() => {
+            localStorage.setItem("onboarding", "");
+            localStorage.setItem("galaxyVersion", 0);
+            window.location.href = "/";
+          }, 500);
+        }
+      });
+
+      document.addEventListener("keyup", (e) => {
+        if (e.key === "Alt") {
+          clearTimeout(altHoldTimer);
+          altHoldTimer = null;
+        }
+      });
     </script>
   </body>
 </html>

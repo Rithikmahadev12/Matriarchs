@@ -85,7 +85,13 @@ body {
   font-family: gravity;
   opacity: 0;
 }
-
+.mini {
+  font-family: gravity;
+  position: absolute;
+  bottom: 0px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
 /*---------------------------------*/
 /*---------------------------------*/
 /*---------------------------------*/
