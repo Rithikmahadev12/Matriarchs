@@ -25,7 +25,6 @@ const blockedIpsPath = path.join(__dirname, "..", "blocked.json");
 let blockedIps = [];
 let gooners = [
   "192.189.117.22",
-  "206.162.39.143",
   "198.175.205.15",
   "172.59.78.231",
   "35.146.250.96",
