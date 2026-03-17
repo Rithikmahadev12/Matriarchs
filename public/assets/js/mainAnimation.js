@@ -495,75 +495,7 @@ function openWindow(
 		});
 	}
 }
-const currentSiteUrl = window.location.origin;
-function launchBlob() {
-	const htmlContent = `
-    <html>
-      <head>
-            <title>Classroom</title>
-            <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
-        <style>
-          body,
-          html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-          }
-          iframe {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-          }
-        </style>
-      </head>
-      <body>
-        <iframe src="${currentSiteUrl}/x.html"></iframe>
-      </body>
-    </html>
-	`;
 
-	const blob = new Blob([htmlContent], {
-		type: "text/html",
-	});
-
-	const blobUrl = URL.createObjectURL(blob);
-
-	open(blobUrl);
-}
-
-function aboutBlank() {
-	var y = window.open("about:blank#", "_blank");
-	y.document.write(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-            <title>Classroom</title>
-            <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
-        </head>
-        <body>
-          <iframe src="${currentSiteUrl}/x.html"></iframe>
-        </body>
-        <style>
-    body,iframe {
-    background: #000;
-
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    border: 0px;
-    margin: 0px;
-    }
-    </style>
-      </html>
-    `);
-	y.document.close();
-}
 
 
 const dock = document.querySelector(".nav");
@@ -632,18 +564,7 @@ function updateTime() {
 	document.getElementById("timeDisplay").textContent = timeString;
 }
 setInterval(updateTime, 1000);
-function auto() {
-	if (localStorage.getItem("autoBlob") === "true") {
-		launchBlob();
-	}
 
-	if (localStorage.getItem("autoAbout") === "true") {
-		aboutBlank();
-		location.replace(
-			"https://lightingshovestature.com/tq5s28ueku?key=787c4f20eb8c6e759c73a4963748ab1c",
-		);
-	}
-}
 const nav = document.getElementById("nav");
 const menu = document.getElementById("options");
 let counter = 0;
@@ -783,9 +704,9 @@ function checkVersion() {
 		localStorage.setItem("galaxyVersion", latestVersion);
 	} else if (storedVersion !== latestVersion) {
 		update();
-	} else {
-		auto();
 	}
 }
 
 checkVersion()
+
+

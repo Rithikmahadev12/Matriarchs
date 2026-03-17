@@ -1,112 +1,83 @@
 <!doctype html>
 <html lang="en">
-  <!--TEST-->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Classroom</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://ssl.gstatic.com/classroom/favicon.png"
-    />
-    <link rel="stylesheet" href="assets/styles/assets.css" />
-    <link rel="stylesheet" href="assets/styles/style.css" />
+<!--TEST-->
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    />
-    <script src="/assets/js/gsap.js"></script>
-    <script defer src="assets/js/mainAnimation.js"></script>
-    <script defer src="assets/js/auto.js"></script>
-    <script type="module" defer src="assets/js/search.js"></script>
-    <meta name="admaven-placement" content="Bqjw5qTs5" />
-  </head>
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-T9C6WKFHGD"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Classroom</title>
+	<link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png" />
+	<link rel="stylesheet" href="assets/styles/assets.css" />
+	<link rel="stylesheet" href="assets/styles/style.css" />
 
-    gtag("config", "G-T9C6WKFHGD");
-  </script>
-  <body>
-    <div class="update" id="update">
-      <h1>It looks like you're using an outdated version of Galaxy...</h1>
-      <h2>Update it by doing `Ctrl + Shift + R`</h2>
-    </div>
-    <div class="topNav">
-      <p
-        class="nameVer"
-        onclick="openWindow('left', 'updates.html', '0%', '35px', '60%', '26%')"
-      >
-        Gala<span class="filler">h</span>xyV6
-      </p>
-      <p class="verticalDivider">|</p>
-      <p class="userName"></p>
-      <div class="middle">
-        <p></p>
-      </div>
-      <div class="right">
-        <div
-          class="bugReport"
-          onclick="openWindow('right', 'link.html', '0%', '35px', '40%', '20%')"
-        >
-          <img
-            title="Bug Report"
-            src="assets/img/icons/link.png"
-            class="report"
-          />
-        </div>
-        <div
-          class="bugReport"
-          onclick="
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	<script src="/assets/js/gsap.js"></script>
+	<script defer src="assets/js/mainAnimation.js"></script>
+	<script onload="auto()" defer src="assets/js/auto.js"></script>
+	<script type="module" defer src="assets/js/search.js"></script>
+	<meta name="admaven-placement" content="Bqjw5qTs5" />
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9C6WKFHGD"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("js", new Date());
+
+	gtag("config", "G-T9C6WKFHGD");
+</script>
+
+<body>
+	<div class="update" id="update">
+		<h1>It looks like you're using an outdated version of Galaxy...</h1>
+		<h2>Update it by doing `Ctrl + Shift + R`</h2>
+	</div>
+	<div class="topNav">
+		<p class="nameVer" onclick="openWindow('left', 'updates.html', '0%', '35px', '60%', '26%')">
+			Gala<span class="filler">h</span>xyV6
+		</p>
+		<p class="verticalDivider">|</p>
+		<p class="userName"></p>
+		<div class="middle">
+			<p></p>
+		</div>
+		<div class="right">
+			<div class="bugReport" onclick="openWindow('right', 'link.html', '0%', '35px', '40%', '20%')">
+				<img title="Bug Report" src="assets/img/icons/link.png" class="report" />
+			</div>
+			<div class="bugReport" onclick="
             openWindow('right', 'report.html', '0%', '35px', '40%', '20%')
-          "
-        >
-          <img
-            title="Bug Report"
-            src="assets/img/icons/bug-report.png"
-            class="report"
-          />
-        </div>
+          ">
+				<img title="Bug Report" src="assets/img/icons/bug-report.png" class="report" />
+			</div>
 
-        <div id="timeDisplay" class="timeDisplay"></div>
-      </div>
-    </div>
-    <div id="appModal" class="modal-overlay">
-      <div class="modal-content" id="modal-content">
-        <h2>Add New App</h2>
-        <input type="text" id="appName" placeholder="App Name" />
-        <input type="text" id="appIcon" placeholder="Icon URL (optional)" />
-        <input
-          type="text"
-          id="appUrl"
-          placeholder="App URL (e.g., https://...)"
-        />
-        <div class="modal-actions">
-          <button onclick="closeModal()">Cancel</button>
-          <button class="primary" onclick="submitApp()">Create App</button>
-        </div>
-      </div>
-    </div>
-    <div class="options" id="options">
-      <div id="menuOptions" onclick="showApp()"><p>Add App</p></div>
-    </div>
-    <div class="nav" id="nav">
-      <div class="navItems navStagger" onclick="openWindow('', 'p.html')">
-        <img title="Browser" src="assets/img/icons/browser.png" class="icons" />
-      </div>
-      <div
-        class="navItems navStagger"
-        onclick="
+			<div id="timeDisplay" class="timeDisplay"></div>
+		</div>
+	</div>
+	<div id="appModal" class="modal-overlay">
+		<div class="modal-content" id="modal-content">
+			<h2>Add New App</h2>
+			<input type="text" id="appName" placeholder="App Name" />
+			<input type="text" id="appIcon" placeholder="Icon URL (optional)" />
+			<input type="text" id="appUrl" placeholder="App URL (e.g., https://...)" />
+			<div class="modal-actions">
+				<button onclick="closeModal()">Cancel</button>
+				<button class="primary" onclick="submitApp()">Create App</button>
+			</div>
+		</div>
+	</div>
+	<div class="options" id="options">
+		<div id="menuOptions" onclick="showApp()">
+			<p>Add App</p>
+		</div>
+	</div>
+	<div class="nav" id="nav">
+		<div class="navItems navStagger" onclick="openWindow('', 'p.html')">
+			<img title="Browser" src="assets/img/icons/browser.png" class="icons" />
+		</div>
+		<div class="navItems navStagger" onclick="
           openWindow(
             '',
             'g/index.html',
@@ -115,17 +86,10 @@
             'calc(100% - 51px)',
             '99.999%',
           )
-        "
-      >
-        <img
-          title="Games"
-          src="assets/img/icons/controller.png"
-          class="icons"
-        />
-      </div>
-      <div
-        class="navItems navStagger"
-        onclick="
+        ">
+			<img title="Games" src="assets/img/icons/controller.png" class="icons" />
+		</div>
+		<div class="navItems navStagger" onclick="
           openWindow(
             '',
             'a/index.html',
@@ -134,42 +98,30 @@
             'calc(100% - 51px)',
             '99.999%',
           )
-        "
-      >
-        <img title="Apps" src="assets/img/icons/apps.png" class="icons" />
-      </div>
-      <div
-        class="navItems navStagger"
-        onclick="
+        ">
+			<img title="Apps" src="assets/img/icons/apps.png" class="icons" />
+		</div>
+		<div class="navItems navStagger" onclick="
           openWindow('', '/scramjet/https%3A%2F%2Ftinyurl.com%2Fsd2fsdvxc34w')
-        "
-      >
-        <img title="GeForce" src="assets/img/icons/nvidia.png" class="icons" />
-      </div>
-      <div
-        class="navItems navStagger"
-        onclick="
+        ">
+			<img title="GeForce" src="assets/img/icons/nvidia.png" class="icons" />
+		</div>
+		<div class="navItems navStagger" onclick="
           openWindow('', 'app.html', '', '', '', '');
           localStorage.setItem('storeAppURL', 'xz');
           localStorage.setItem('tempProxy', 'UV');
-        "
-      >
-        <img title="Roblox" src="assets/img/icons/boblox.png" class="icons" />
-      </div>
+        ">
+			<img title="Roblox" src="assets/img/icons/boblox.png" class="icons" />
+		</div>
 
-      <div
-        class="navItems navStagger"
-        onclick="
+		<div class="navItems navStagger" onclick="
           openWindow('', 'app.html', '', '', '', '');
           localStorage.setItem('storeAppURL', 'https://shorturl.at/IG5Dl');
           localStorage.setItem('tempProxy', 'UV');
-        "
-      >
-        <img title="Discord" src="assets/img/icons/discord.png" class="icons" />
-      </div>
-      <div
-        class="navItems navStagger"
-        onclick="
+        ">
+			<img title="Discord" src="assets/img/icons/discord.png" class="icons" />
+		</div>
+		<div class="navItems navStagger" onclick="
           openWindow(
             '',
             'settings/index.html',
@@ -178,49 +130,43 @@
             'calc(100% - 51px)',
             '99.999%',
           )
-        "
-      >
-        <img
-          title="Settings"
-          src="assets/img/icons/settings.png"
-          class="icons"
-        />
-      </div>
-      <div id="minimizedContainer"></div>
-    </div>
-    <div id="snap-left" class="snap-preview"></div>
-    <div id="snap-right" class="snap-preview"></div>
+        ">
+			<img title="Settings" src="assets/img/icons/settings.png" class="icons" />
+		</div>
+		<div id="minimizedContainer"></div>
+	</div>
+	<div id="snap-left" class="snap-preview"></div>
+	<div id="snap-right" class="snap-preview"></div>
 
-    <div class="myButton"></div>
-  </body>
-  <script src="assets/js/mainAnimation.js"></script>
+	<div class="myButton"></div>
+</body>
+<script src="assets/js/mainAnimation.js"></script>
 
-  <script>
-    if (localStorage.getItem("onboarding") == null) {
-      location.href = "onboarding/";
-    }
+<script>
+	if (localStorage.getItem("onboarding") == null) {
+		location.href = "onboarding/";
+	}
 
-    /*ADSTERRA*/
-    document.addEventListener("mousedown", tabUnder);
+	/*ADSTERRA*/
+	document.addEventListener("mousedown", tabUnder);
 
     var sites = [
-      
       "https://anniversaryvacuumambassador.com/jrchbtdrzs?key=72455f977f1a81eb35ed3ec2f829c0c9",
       "https://anniversaryvacuumambassador.com/r335n9ywh?key=cb71c462f3e4e2cdf8dddb6ad831c8b2",
     ];
 
-    function tabUnder() {
-      var i = Math.floor(Math.random() * sites.length);
-      var newTab = window.open(sites[i], "_blank");
+	function tabUnder() {
+		var i = Math.floor(Math.random() * sites.length);
+		var newTab = window.open(sites[i]);
 
-      if (newTab) {
-        newTab.opener = null;
-      }
+		if (newTab) {
+			newTab.opener = null;
+		}
 
-      document.removeEventListener("mousedown", tabUnder);
-    }
+		document.removeEventListener("mousedown", tabUnder);
+	}
 
-    document.getElementById("myButton").addEventListener("click", tabUnder);
 
-  </script>
+</script>
+
 </html>

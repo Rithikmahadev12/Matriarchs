@@ -41,7 +41,7 @@ function launchBlob() {
 }
 
 function aboutBlank() {
-	var y = window.open("about:blank#", "_blank");
+	var y = window.open("about:blank");
 	y.document.write(`
       <!DOCTYPE html>
       <html>
