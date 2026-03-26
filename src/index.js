@@ -21,22 +21,22 @@ const PORT = process.env.PORT || 4040;
 const HOST = process.env.HOST || "0.0.0.0";
 const env = process.env.env || "production";
 const dscWebhook = process.env.webhookthing;
-const blockedIpsPath = "";
-let blockedIps = [];
-let gooners = [
-  "192.189.117.22",
-  "198.175.205.15",
-  "172.59.78.231",
-  "35.146.250.96",
-  "76.14.58.188",
-  "149.19.33.72"
-]
-try {
-  const data = readFileSync(blockedIpsPath, "utf-8");
-  blockedIps = JSON.parse(data);
-} catch (err) {
-  console.error("Could not load blocked.json, continuing with empty list.");
-}
+// const blockedIpsPath = path.join(__dirname, "..", "blocked.json");
+// let blockedIps = [];
+// let gooners = [
+//   "192.189.117.22",
+//   "198.175.205.15",
+//   "172.59.78.231",
+//   "35.146.250.96",
+//   "76.14.58.188",
+//   "149.19.33.72"
+// ]
+// try {
+//   const data = readFileSync(blockedIpsPath, "utf-8");
+//   blockedIps = JSON.parse(data);
+// } catch (err) {
+//   console.error("Could not load blocked.json, continuing with empty list.");
+// }
 const fastify = Fastify({
   trustProxy: true,
   serverFactory: (handler) => {
@@ -50,7 +50,7 @@ const fastify = Fastify({
         const ip =
           req.headers["x-forwarded-for"]?.split(",")[0].trim() ||
           req.socket.remoteAddress;
-        if (blockedIps.includes(ip)) return socket.destroy();
+        // if (blockedIps.includes(ip)) return socket.destroy();
         if (req.url.endsWith("/wisp/")) wisp.routeRequest(req, socket, head);
         else socket.end();
       });
@@ -63,11 +63,11 @@ fastify.addHook("onRequest", async (request, reply) => {
     console.log("Gooner detected: " + request.ip);
   }
 });
-fastify.addHook("onRequest", async (request, reply) => {
-  if (blockedIps.includes(request.ip)) {
-    reply.code(403).send({ error: "Access denied from this IP." });
-  }
-});
+// fastify.addHook("onRequest", async (request, reply) => {
+//   if (blockedIps.includes(request.ip)) {
+//     reply.code(403).send({ error: "Access denied from this IP." });
+//   }
+// });
 fastify.register(fastifyStatic, {
   root: publicDir,
   prefix: "/",
