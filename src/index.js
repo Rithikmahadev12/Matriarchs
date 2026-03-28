@@ -23,14 +23,14 @@ const env = process.env.env || "production";
 const dscWebhook = process.env.webhookthing;
 // const blockedIpsPath = path.join(__dirname, "..", "blocked.json");
 // let blockedIps = [];
-let gooners = [
-  "192.189.117.22",
-  "198.175.205.15",
-  "172.59.78.231",
-  "35.146.250.96",
-  "76.14.58.188",
-  "149.19.33.72"
-]
+// let gooners = [
+//   "192.189.117.22",
+//   "198.175.205.15",
+//   "172.59.78.231",
+//   "35.146.250.96",
+//   "76.14.58.188",
+//   "149.19.33.72"
+// ]
 // try {
 //   const data = readFileSync(blockedIpsPath, "utf-8");
 //   blockedIps = JSON.parse(data);
