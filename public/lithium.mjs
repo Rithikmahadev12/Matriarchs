@@ -55,7 +55,7 @@ const swAllowedHostnames = ["localhost", "127.0.0.1"];
  * @returns {Promise<void>}
  * @throws Will throw if service workers are unsupported or not HTTPS on disallowed hosts.
  */
-async function registerSW() {
+export async function registerSW() {
   if (!navigator.serviceWorker) {
     if (
       location.protocol !== "https:" &&
@@ -69,10 +69,10 @@ async function registerSW() {
   await navigator.serviceWorker.register(stockSW);
 }
 
-if (window.self === window.top) {
-  await registerSW();
-  console.log("lethal.js: Service Worker registered");
-}
+// if (window.self === window.top) {
+//   await registerSW();
+//   console.log("lethal.js: Service Worker registered");
+// }
 
 //////////////////////////////
 ///        Functions       ///
