@@ -35,7 +35,6 @@ export async function openurl(url, proxytype) {
 }
 export async function openApp(url, proxytype) {
   let iframe = document.getElementById("frame");
-  ;
   let URL;
   if (proxytype === "SJ") {
     URL = await proxySJ(makeURL(url));
