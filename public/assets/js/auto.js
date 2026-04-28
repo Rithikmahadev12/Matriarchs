@@ -1,3 +1,6 @@
+if (window.__autoLoaded) { throw new Error("auto.js already loaded"); }
+window.__autoLoaded = true;
+
 function updateFavicon(href) {
 	if (!href) return;
 	let link = document.querySelector("link[rel~='icon']");
@@ -11,9 +14,7 @@ function updateFavicon(href) {
 function applyStoredValues() {
 	const savedTitle = localStorage.getItem("pageTitle");
 	if (savedTitle) document.title = savedTitle;
-
 	updateFavicon(localStorage.getItem("pageFavicon"));
-
 	const backgroundURL = localStorage.getItem("backgroundURL");
 	if (backgroundURL) {
 		document.documentElement.style.setProperty(
@@ -22,14 +23,12 @@ function applyStoredValues() {
 		);
 	}
 }
-
 function loadAntiClose() {
 	let xyz = localStorage.getItem("checkAntiClose");
 	if (xyz == "true") {
 		window.addEventListener("beforeunload", function(event) {
 			event.preventDefault();
-			event.returnValue =
-				"This maessage prevents teachers from closing the tab";
+			event.returnValue = "This message prevents teachers from closing the tab";
 		});
 		localStorage.setItem("checkAntiClose", "true");
 	} else {
@@ -38,12 +37,8 @@ function loadAntiClose() {
 }
 function updateName() {
 	let x = localStorage.getItem("name");
-
 	document.querySelector(".userName").textContent = x;
 }
-
-
-
 function updateGlassmorphismDarkness() {
 	let opacityValue = localStorage.getItem("glassDarknessStore") || "0.432";
 	const newGlassmorphismBG = `rgba(14, 13, 13, ${opacityValue})`;
@@ -52,7 +47,6 @@ function updateGlassmorphismDarkness() {
 		newGlassmorphismBG
 	);
 }
-
 window.addEventListener("storage", (event) => {
 	switch (event.key) {
 		case "pageTitle":
@@ -78,19 +72,19 @@ window.addEventListener("storage", (event) => {
 			break;
 	}
 });
-
 document.addEventListener("DOMContentLoaded", applyStoredValues);
 document.addEventListener("DOMContentLoaded", updateGlassmorphismDarkness);
+
 const currentSiteUrl = window.location.origin;
+
 function launchBlob() {
 	const htmlContent = `
     <html>
       <head>
-            <title>Classroom</title>
-            <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+        <title>Classroom</title>
+        <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
         <style>
-          body,
-          html {
+          body, html {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -113,13 +107,8 @@ function launchBlob() {
       </body>
     </html>
 	`;
-
-	const blob = new Blob([htmlContent], {
-		type: "text/html",
-	});
-
+	const blob = new Blob([htmlContent], { type: "text/html" });
 	const blobUrl = URL.createObjectURL(blob);
-
 	open(blobUrl);
 }
 
@@ -129,23 +118,22 @@ function aboutBlank() {
       <!DOCTYPE html>
       <html>
         <head>
-            <title>Classroom</title>
-            <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+          <title>Classroom</title>
+          <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
         </head>
         <body>
           <iframe src="${currentSiteUrl}/x.html"></iframe>
         </body>
         <style>
-    body,iframe {
-    background: #000;
-
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    border: 0px;
-    margin: 0px;
-    }
-    </style>
+          body, iframe {
+            background: #000;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            border: 0px;
+            margin: 0px;
+          }
+        </style>
       </html>
     `);
 	y.document.close();
@@ -155,7 +143,6 @@ window.auto = () => {
 	if (localStorage.getItem("autoBlob") === "true") {
 		launchBlob();
 	}
-
 	if (localStorage.getItem("autoAbout") === "true") {
 		aboutBlank();
 		location.replace(
