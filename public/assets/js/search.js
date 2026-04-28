@@ -237,8 +237,17 @@ function bugReports() {
   iframe.src = "/report.html";
 }
 window.bugReports = bugReports;
-const browserBtn = document.querySelectorAll('.navItems');
+// Register SW immediately on load, not just on button click
+(async () => {
+  try {
+    await registerSW();
+    console.log("SW registered on load");
+  } catch (e) {
+    console.warn("SW registration failed:", e);
+  }
+})();
 
+const browserBtn = document.querySelectorAll('.navItems');
 browserBtn.forEach(btn => {
   btn.addEventListener("click", () => {
     registerSW();
